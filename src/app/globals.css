@@ -1,0 +1,35 @@
+/* Smooth transitions for nav items */
+.nav-item {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Mobile menu styles */
+@media (max-width: 768px) {
+  .nav-menu {
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+}
+/* Layout styles to push footer to bottom */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.layout-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  flex: 1;
+}
