@@ -6,12 +6,14 @@ nav {
     background: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+  /* #5ec1ac - Light shade */
+/* #3c7f70 - dark shade */
   /* Logo/Brand Link */
   .nav-brand {
     font-weight: bold;
     font-size: 1.5rem;
     color: #2563eb;
+
     text-decoration: none;
     transition: all 0.3s ease;
   }
@@ -44,7 +46,8 @@ nav {
   }
   
   .nav-link:hover {
-    color: #2563eb; /
+    /* color: #2563eb;  */
+    color:#5ec1ac;
   }
   
   /* Active Link Indicator */
@@ -55,7 +58,7 @@ nav {
     left: 0;
     width: 0;
     height: 2px;
-    background: #2563eb;
+    background:#5ec1ac;;
     transition: width 0.3s ease;
   }
   

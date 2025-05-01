@@ -1,8 +1,8 @@
 import './globals.css'
 
 export const metadata = {
-  title: 'My App',
-  description: 'Welcome to my app',
+  title: 'KeyLinx',
+  description: 'Welcome to KeyLinx',
 }
 
 export default function RootLayout({ children }) {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from '../styles/navbar.module.css'; // Import CSS module
+import Image from 'next/image'
 
 export default function Navbar() {
   return (
@@ -7,8 +8,25 @@ export default function Navbar() {
       <div className={styles.navContainer}>
         {/* Logo on the left */}
         <Link href="/" className={styles.logo}>
-          KeyLinx
-        </Link>
+    
+    KeyLinx
+  </Link>
+        <Image
+      src="/logo.jpeg"
+      width={80}
+      height={80}
+      border-radius='10%'
+      
+      alt="KeyLinx logo"
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 30,
+        zIndex: 10,
+      }}
+  
+    />
+      
         
         {/* Center navigation links */}
         <nav className={styles.navLinks}>
@@ -20,9 +38,9 @@ export default function Navbar() {
 
             How it Works
           </Link>
-          <Link href="/verify" className={styles.navItem}>
+          {/* <Link href="/verify" className={styles.navItem}>
             Verify
-          </Link>
+          </Link> */}
         </nav>
         
         {/* Login button on the right */}

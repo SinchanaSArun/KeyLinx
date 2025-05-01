@@ -1,0 +1,177 @@
+:root {
+    --primary:#839fdc;
+    --success: #64da7f;
+    --warning: #ffc107;
+    --gray: #6c757d;
+    --light: #f8f9fa;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 800px;
+    background:     #839fdc;;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 2rem auto; /* Changed from 20rem to auto for better centering */
+  }
+  
+  header {
+    background: var(--primary);
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  h1 {
+    margin: 0;
+    font-weight: 600;
+    font-size: clamp(1.4rem, 4vw, 1.8rem); /* Responsive font size */
+  }
+  
+  .content {
+    padding: 2rem;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    justify-content: center; /* Better button alignment */
+  }
+  
+  button {
+    flex: 1 1 200px; /* Better flex behavior */
+    min-width: 120px;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  #registerBtn {
+    background:    #31343a;
+    color: white;
+  }
+  
+  #verifyBtn {
+    background:var(--success);
+    color: white;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  button:disabled {
+    background: var(--gray);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    opacity: 0.7;
+  }
+  
+  #output {
+    background: var(--light);
+    border-radius: 8px;
+    padding: 1.5rem;
+    min-height: 20px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .status-message {
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: 'Segoe UI', sans-serif;
+    animation: fadeIn 0.5s ease;
+    background: rgba(240, 236, 236, 0.9);
+  }
+  
+  /* Responsive Breakpoints */
+  @media (max-width: 768px) {
+    .container {
+      width: 95%;
+      margin: 1rem auto;
+      border-radius: 12px;
+    }
+    
+    .content {
+      padding: 1.5rem;
+    }
+    
+    .button-group {
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    button {
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+    }
+    
+    #output {
+      padding: 1rem;
+      min-height: 150px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .content {
+      padding: 1rem;
+    }
+    
+    .button-group {
+      flex-direction: column;
+    }
+    
+    button {
+      width: 100%;
+      flex: 1 1 auto;
+    }
+    
+    header {
+      padding: 1rem;
+    }
+    
+    h1 {
+      font-size: 1.3rem;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+  }
+  
+  .loading {
+    animation: pulse 1.5s infinite;
+  }
+  
+  .icon {
+    font-size: 1.2rem;
+  }
