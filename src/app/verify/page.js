@@ -1,57 +1,24 @@
-"use client";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import "./verify.css";
+import SignatureVerifier from '@/components/SignatureVerifier';
 
-export default function Verify() {
-  // Button click handlers
-  const handleRegister = () => {
-    // Register keys logic here
-    console.log("Register button clicked");
-  };
+export const metadata = {
+  title: 'Blockchain Signature Verification',
+  description: 'Verify signed messages using blockchain public keys',
+};
 
-  const handleVerify = () => {
-    // Verify keys logic here
-    console.log("Verify button clicked");
-  };
-
+export default function Login() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <h1>Verify page</h1>
-        <div className="container">
-          <header>
-            <h1>Secure Key Manager</h1>
-          </header>
-          
-          <div className="content">
-            <div className="button-group">
-              <button 
-                id="registerBtn" 
-                onClick={handleRegister}
-                className="action-button"
-              >
-                <span className="icon">🔑</span> Register Keys
-              </button>
-              <button 
-                id="verifyBtn" 
-                onClick={handleVerify}
-                className="action-button"
-              >
-                <span className="icon">🔍</span> Verify Keys
-              </button>
-            </div>
-            
-            <div id="output">
-              <div className="status-message">
-                <span className="icon">ℹ️</span> System ready. Click a button to begin.
-              </div>
-            </div>
-          </div>
+    <main className="min-h-screen bg-gray-50 py-12">
+      <div className="max-w-3xl mx-auto px-4">
+        <div className="bg-white p-8 rounded-xl shadow-md">
+          <h1 className="text-3xl font-bold text-center text-gray-800 mb-2">
+            Digital Signature Verification
+          </h1>
+          <p className="text-center text-gray-600 mb-8">
+            Verify messages signed with your USB security device
+          </p>
+          <SignatureVerifier />
         </div>
-      </main>
-      <Footer />
-    </>
+      </div>
+    </main>
   );
 }

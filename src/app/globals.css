@@ -1,35 +1,109 @@
-/* Smooth transitions for nav items */
-.nav-item {
-  transition: all 0.2s ease-in-out;
-}
-
-/* Mobile menu styles */
-@media (max-width: 768px) {
-  .nav-menu {
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    width: 100%;
-    background: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  }
-}
-/* Layout styles to push footer to bottom */
+/* Core Layout Styles */
 html, body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Consolas, monaco, monospace;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  min-height: 100vh; /* Fallback for older browsers */
 }
 
 .layout-container {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .content-wrapper {
-  flex: 1;
+  flex: 1 0 auto; /* This pushes the footer down */
+  width: 100%;
+}
+
+/* Navigation Styles - Responsive for all screens */
+.nav-container {
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-item {
+  padding: 0.5rem 1rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: #5ec1ac;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .nav-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    position: relative;
+  }
+
+  .nav-menu.active {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+
+  .nav-item {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+  }
+}
+
+/* Footer Styles - Always at bottom */
+.footer {
+  width: 100%;
+  background: #2d3748;
+  color: white;
+  padding: 1.5rem 0;
+  margin-top: auto; /* Ensures footer stays at bottom */
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  .footer {
+    padding: 1rem 0;
+  }
+  
+  .nav-item {
+    padding: 0.5rem;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1600px) {
+  .nav-menu, .footer-container {
+    max-width: 1400px;
+  }
 }
