@@ -83,6 +83,8 @@ export default function Login() {
               </p>
             )}
 
+
+
             {/* Conditionally render SignatureVerifier after login */}
             {userId && (
                 <div className="mt-6">
@@ -91,8 +93,9 @@ export default function Login() {
                   </p>
                   <SignatureVerifier userId={userId} />
                 </div>
+              
 )}
-
+  
             <div className="auth-links">
               <p>Not a User? <Link href="/register">Register Here</Link></p>
               <p><Link href="/">Return to Home</Link></p>
