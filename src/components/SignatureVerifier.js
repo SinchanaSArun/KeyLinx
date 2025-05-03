@@ -1,29 +1,31 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-export default function SignatureVerifier({ userId }) {
+export default function SignatureVerifier({userId}) {
   const [state, setState] = useState({
     status: 'idle',
     error: null,
     publicKey: null,
     signature: null,
-    originalMessage: null
+    originalMessage: null,
   });
 
   const fetchPublicKey = async (userId) => {
     try {
       // Fetch the public key from the correct endpoint
+      console.log(userId);
       const response = await fetch(`https://keylinx.onrender.com/getUser/${userId}`);
       if (!response.ok) {
         const errorDetails = await response.json();
         throw new Error(`Failed to fetch public key: ${errorDetails.message || response.statusText}`);
       }
       const data = await response.json();
+      // console.log(data);
       return {
-        e: data.e, // Assuming the response contains `e` (exponent) and `n` (modulus)
-        n: data.n
+        e: data.publicKey.e, // Assuming the response contains `e` (exponent) and `n` (modulus)
+        n: data.publicKey.n
       };
     } catch (error) {
       throw new Error(`Failed to fetch public key: ${error.message}`);
@@ -43,6 +45,7 @@ export default function SignatureVerifier({ userId }) {
       toast.loading('Connecting to blockchain network...');
 
       const publicKey = await fetchPublicKey(userId);
+      console.log(publicKey);
       toast.loading('Preparing challenge...');
 
       // Construct the challenge
@@ -51,30 +54,27 @@ export default function SignatureVerifier({ userId }) {
         service: 'keylinx.com',
         timestamp: new Date().toISOString(),
         nonce: crypto.randomUUID(),
-        message: 'Please sign this challenge to authenticate'
+        message: 'Please sign this challenge for good luck'
       };
 
       // Send to localhost:7070 for signature verification
-      const verifyResponse = await fetch('http://localhost:7070/verify', {
+      const verifyResponse = await fetch('http://localhost:7070/sign', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          publicKey,  // Sending the public key with `e` and `n` in the request
-          challenge,
-          signature: 'b12c3e5f7a984d6d99c2f331b3a8dc7a' // Example signature, replace with actual
-        })
+        body: JSON.stringify(challenge)
       });
 
       const result = await verifyResponse.json();
+      console.log(result);
 
       // Make sure there's a valid signature in the result
       if (!result.signature || result.signature === 'b12c3e5f7a984d6d99c2f331b3a8dc7a') {
         throw new Error('Please provide a valid signature to verify.');
       }
 
-      if (!verifyResponse.ok || !result.valid) {
+      if (!verifyResponse.ok) {
         throw new Error(result.error || 'Signature verification failed');
       }
 

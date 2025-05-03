@@ -85,12 +85,12 @@ export default function Login() {
 
             {/* Conditionally render SignatureVerifier after login */}
             {userId && (
-  <div className="mt-6">
-    <p className="text-sm text-gray-600 mb-2">
-      UserId: <span className="font-medium text-black">{userId}</span>
-    </p>
-    <SignatureVerifier userId={userId} />
-  </div>
+                <div className="mt-6">
+                  <p className="text-sm text-gray-600 mb-2">
+                    UserId: <span className="font-medium text-black">{userId}</span>
+                  </p>
+                  <SignatureVerifier userId={userId} />
+                </div>
 )}
 
             <div className="auth-links">
